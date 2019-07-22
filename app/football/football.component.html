@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+          <h3 class="text-center">Search Number:</h3>
+          <form [formGroup]="footballSearchForm" (ngSubmit)="sendToAPI_FOOTBALL(footballSearchForm.value)">
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                id="footballLocation"
+                aria-describedby="footballLocation"
+                placeholder="Please input a Number"
+                formControlName="searchTerm"/>
+             </div>
+             <div class="text-center"> 
+              <button type="submit" class="btn btn-success btn-md">
+                Search </button>
+             </div>
+           </form> 
+        </div>
+        
+    <div class="col-md-6">
+        <h3 class="text-center my-4 ">Football Information:</h3>
+        <p class="text-center">
+           Name:
+            </p>
+          <div *ngFor="let user of footballData" class="media"> 
+            <div class="media-left">
+                <a [routerLink] = "['user', user.country_name , user.team_name]"> 
+                    <p>{{ user.league_name }}</p>
+            <p>{{ user.team_name }}   Position =    {{ user.overall_league_position }}</p>
+            <br>
+            
+            
+            </a>
+            </div>
+             </div> 
+      
+        </div>
+        
+        
